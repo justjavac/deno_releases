@@ -28,6 +28,7 @@ jobs:
             exit 0
           fi
           for archive in "deno-x86_64-pc-windows-msvc.zip" "deno-x86_64-apple-darwin.zip" "deno-x86_64-unknown-linux-gnu.zip"; do
+              mkdir $latest
               download_uri="https://github.com/denoland/deno/releases/download/v${latest}/${archive}"
               curl --fail --location  --output "$latest/$archive" "$download_uri"
           done
@@ -44,10 +45,7 @@ jobs:
           git config --local user.name "迷渡"
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add .
-          git commit -am "release $(head -n +1 latest.txt)"
+          git commit -am "release $(head -n +1 versions.txt)"
           git pull --rebase
           git push
-          curl -sSL https://purge.jsdelivr.net/gh/denoland/deno_releases/deno-x86_64-apple-darwin.zip
-          curl -sSL https://purge.jsdelivr.net/gh/denoland/deno_releases/deno-x86_64-pc-windows-msvc.zip
-          curl -sSL https://purge.jsdelivr.net/gh/denoland/deno_releases/deno-x86_64-unknown-linux-gnu.zip
-          curl -sSL https://purge.jsdelivr.net/gh/denoland/deno_releases/versions.txt
+          curl -sSL https://purge.jsdelivr.net/gh/justjavac/deno_releases/versions.txt
