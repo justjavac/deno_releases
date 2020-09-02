@@ -27,8 +27,8 @@ jobs:
             echo "No new version"
             exit 0
           fi
+          mkdir $latest
           for archive in "deno-x86_64-pc-windows-msvc.zip" "deno-x86_64-apple-darwin.zip" "deno-x86_64-unknown-linux-gnu.zip"; do
-              mkdir $latest
               download_uri="https://github.com/denoland/deno/releases/download/v${latest}/${archive}"
               curl --fail --location  --output "$latest/$archive" "$download_uri"
           done
