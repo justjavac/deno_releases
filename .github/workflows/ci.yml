@@ -45,7 +45,7 @@ jobs:
           git config --local user.name "迷渡"
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add .
-          git commit -am "release $(head -n +1 versions.txt)"
+          git commit -am "release v$(head -n +1 versions.txt)"
           git pull --rebase
           git push
           curl -sSL https://purge.jsdelivr.net/gh/justjavac/deno_releases/versions.txt
