@@ -41,7 +41,7 @@ jobs:
             exit 0
           fi
 
-          git config --local user.email "denoland@gmail.com"
+          git config --local user.email "justjavac@gmail.com"
           git config --local user.name "迷渡"
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add .
