@@ -23,7 +23,7 @@ jobs:
             echo "Error: Unable to find latest deno release on GitHub."
             exit 1
           fi
-          if [ $(head -n +1 latest.txt) = "${latest}" ]; then
+          if [ $(head -n +1 versions.txt) = "${latest}" ]; then
             echo "No new version"
             exit 0
           fi
